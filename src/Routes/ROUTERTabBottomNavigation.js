@@ -1,15 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {View, Text} from 'react-native';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from '@rneui/themed';
 import {GUI_colors} from '../UI/styles/STYLESMain';
 import VIEWHome from '../UI/screens/views/VIEWHome';
 import VIEWExplore from '../UI/screens/views/VIEWExplore';
 import VIEWHistory from '../UI/screens/views/VIEWHistory';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default class ROUTERTabBottomNavigation extends React.Component {
   routes = {
