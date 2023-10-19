@@ -3,7 +3,7 @@ import * as React from 'react';
 import {View, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from '@rneui/themed';
-import {GUI_colors} from '../UI/styles/STYLESMain';
+import {GUI_colors, GUI_styles} from '../UI/styles/STYLESMain';
 import VIEWHome from '../UI/screens/views/VIEWHome';
 import VIEWExplore from '../UI/screens/views/VIEWExplore';
 import VIEWHistory from '../UI/screens/views/VIEWHistory';
@@ -104,30 +104,16 @@ export default class ROUTERTabBottomNavigation extends React.Component {
 
   getNavigationHeader(route) {
     const title = this.routes[route].title;
-
-    let styles = {
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 60,
-      backgroundColor: 'white',
-    };
-
     return (
-      <View style={styles}>
-        <Text style={[{fontSize: 18}]}>{title}</Text>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 60,
+          backgroundColor: 'white',
+        }}>
+        <Text style={[GUI_styles.fontT1]}>{title}</Text>
       </View>
     );
-
-    /*
-    if (route !== 'CCHomeView') {
-      //styles = {...styles, ...GUI_styles.shadow, ...{borderTopWidth: 0}};
-    }
-
-    return (
-      <View style={styles}>
-        <Text style={[GUI_styles.fontPB, {fontSize: 18}]}>{title}</Text>
-      </View>
-    );
-    */
   }
 }
