@@ -73,9 +73,6 @@ export default class ROUTERTabBottomNavigation extends React.Component {
 
   getNavigationIcon(route, focused) {
     const icon = this.routes[route].icon;
-
-    console.log(icon);
-
     return (
       <View
         style={{
