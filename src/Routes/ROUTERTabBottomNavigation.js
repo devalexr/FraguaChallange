@@ -6,7 +6,8 @@ import {Icon} from '@rneui/themed';
 import {GUI_colors, GUI_styles} from '../UI/styles/STYLESMain';
 import VIEWHome from '../UI/screens/views/VIEWHome';
 import VIEWExplore from '../UI/screens/views/VIEWExplore';
-import VIEWHistory from '../UI/screens/views/VIEWHistory';
+import VIEWSearch from '../UI/screens/views/VIEWSearch';
+import VIEWFavorites from '../UI/screens/views/VIEWFavorites';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,24 +15,31 @@ export default class ROUTERTabBottomNavigation extends React.Component {
   routes = {
     VIEWHome: {
       icon: {
-        type: 'material-community',
-        name: 'ab-testing',
+        type: 'font-awesome-5',
+        name: 'unsplash',
       },
-      title: 'Home',
+      title: 'Unsplash',
     },
-    VIEWHistory: {
+    VIEWSearch: {
       icon: {
-        type: 'material-community',
-        name: 'abacus',
+        type: 'ionicon',
+        name: 'search-outline',
       },
-      title: 'History',
+      title: 'Buscar',
     },
     VIEWExplore: {
       icon: {
-        type: 'material-community',
-        name: 'account',
+        type: 'font-awesome',
+        name: 'wpexplorer',
       },
-      title: 'Explore',
+      title: 'Explorar',
+    },
+    VIEWFavorites: {
+      icon: {
+        type: 'material-community',
+        name: 'heart-outline',
+      },
+      title: 'Favoritos',
     },
   };
 
@@ -64,8 +72,13 @@ export default class ROUTERTabBottomNavigation extends React.Component {
         />
         <Tab.Screen
           //options={{headerShown: false}}
-          name="VIEWHistory"
-          component={VIEWHistory}
+          name="VIEWSearch"
+          component={VIEWSearch}
+        />
+        <Tab.Screen
+          //options={{headerShown: false}}
+          name="VIEWFavorites"
+          component={VIEWFavorites}
         />
       </Tab.Navigator>
     );

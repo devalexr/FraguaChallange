@@ -7,11 +7,25 @@ export default class VControllerHome extends VController {
     loading: true,
   };
 
-  static async onInit() {
+  static async _onInit() {
     const data = await VModelHome.getPhotos();
     this.setState({
       data: data,
       loading: false,
     });
+  }
+
+  //=============== VIEW EVENTS =============
+
+  static onPressItem(item) {
+    console.log(item);
+  }
+
+  static onPressLikeButtom(itemId) {
+    alert('liked image: ' + itemId);
+  }
+
+  static onPressUser(userId) {
+    alert('go to user profile: ' + userId);
   }
 }

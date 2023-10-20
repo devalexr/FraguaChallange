@@ -5,12 +5,12 @@ export default class VController {
   static setView(view) {
     this.view = view;
     this.view.state = this.initialState;
-    this.onInit();
+    this._onInit();
   }
 
   static setState(state) {
     this.view.setState(state);
   }
 
-  static onInit() {}
+  static _onInit() {}
 }
