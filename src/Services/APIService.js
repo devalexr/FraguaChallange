@@ -87,7 +87,7 @@ export default class APIService {
 
   static async _catchRequestError(error, url = '') {
     setTimeout(() => {
-      ROUTERNavigation.navigate('error', {
+      ROUTERNavigation.reset('error', {
         message: error.toString(),
         url: url,
       });
