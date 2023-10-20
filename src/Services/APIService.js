@@ -1,7 +1,5 @@
 import axios from 'axios';
 import {AXIOS_REQUEST_TIMEOUT} from '@env';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Alert} from 'react-native';
 import {ROUTERNavigation} from '../Routes/ROUTERMain';
 
 export default class APIService {
@@ -12,14 +10,12 @@ export default class APIService {
     axios.defaults.timeout = parseInt(AXIOS_REQUEST_TIMEOUT);
     this.logBefore(url, 'get');
     const response = await axios.get(url);
-    //this.logAfter(url, 'get', response);
+    this.logAfter(url, 'get', response);
     return response;
   }
 
   static async get(url, parameters, config = {}) {
     const URL_REQUEST = this._createURLRequest(url, parameters);
-
-    const deviceMemory = config?.device_memory;
     const cacheRequest = config?.cache;
 
     if (cacheRequest && this.CACHE_REQUEST[URL_REQUEST]) {
@@ -30,10 +26,8 @@ export default class APIService {
       );
       return this.CACHE_REQUEST[URL_REQUEST];
     }
-
     try {
       const response = await this._get(URL_REQUEST);
-
       if (response.status === 200) {
         const JSON_response = response.data;
 
@@ -42,59 +36,15 @@ export default class APIService {
           this.CACHE_REQUEST[URL_REQUEST] = JSON_response;
         }
 
-        if (deviceMemory) {
-          try {
-            await AsyncStorage.setItem(
-              URL_REQUEST,
-              JSON.stringify(JSON_response),
-            );
-            console.log(
-              'JSON Guardado en almacenamiento del dispositivo URL: ',
-              URL_REQUEST,
-              JSON_response,
-            );
-          } catch (error) {
-            console.error(
-              'Error al guardar respuesta del request en el dispositivo',
-              error.toString(),
-            );
-          }
-        }
-
         return JSON_response;
       } else {
-        /*
-        if (TARGET === 'dev') {
-          Alert.alert(
-            'Ocurrió un error al obtener los datos del servidor',
-            response?.data?.mensaje,
-          );
-        }
-        */
+        this._catchRequestError(
+          'Request error -> CODE: ' + response.status,
+          URL_REQUEST,
+        );
       }
     } catch (error) {
-      console.log(error.toString());
-
-      if (cacheRequest) {
-        //usar AsyncStorage
-        try {
-          const JSON_respuesta = await AsyncStorage.getItem(URL_REQUEST);
-          if (!JSON_respuesta) {
-            return;
-          }
-          return JSON.parse(JSON_respuesta);
-        } catch (error) {
-          //no existe el request en la memoria del dispositivo
-        }
-      } else {
-        this._catchRequestError(error, URL_REQUEST);
-        /*
-        este sleep() evita que se ejecute el codigo que
-        esta uilizado la llamada el API antes de que _catchRequestError()
-        se lanze. esto evita crashes importantes en el app
-        */
-        //await HELPERUtils.sleep(5000);
-      }
+      this._catchRequestError(error, URL_REQUEST);
     }
   }
 
@@ -137,7 +87,7 @@ export default class APIService {
 
   static async _catchRequestError(error, url = '') {
     setTimeout(() => {
-      ROUTERNavigation.reset('pageErrorServer', {
+      ROUTERNavigation.navigate('error', {
         message: error.toString(),
         url: url,
       });

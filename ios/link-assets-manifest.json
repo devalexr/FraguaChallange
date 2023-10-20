@@ -4,6 +4,10 @@
     {
       "path": "src/assets/fonts/Articulat CF Bold.ttf",
       "sha1": "3ae4111cfd55ba9f6ded9d8661dcfcebdfd2000f"
+    },
+    {
+      "path": "src/assets/fonts/ArticulatCF-Medium.ttf",
+      "sha1": "12bb217a2b7ce4825c007c740a04cf1726dd521b"
     }
   ]
 }

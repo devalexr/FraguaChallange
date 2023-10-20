@@ -5,17 +5,21 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 import ROUTERTabBottomNavigation from './ROUTERTabBottomNavigation';
+import PAGEError from '../UI/pages/PAGEError';
+import PAGEInit from '../UI/pages/PAGEInit';
 
 export default class ROUTERMain extends React.Component {
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="home"
+          initialRouteName="init"
           screenOptions={{
             headerShown: false,
           }}>
           <Stack.Screen name="home" component={ROUTERTabBottomNavigation} />
+          <Stack.Screen name="init" component={PAGEInit} />
+          <Stack.Screen name="error" component={PAGEError} />
         </Stack.Navigator>
       </NavigationContainer>
     );
