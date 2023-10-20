@@ -1,7 +1,5 @@
 import moment from 'moment';
 import 'moment/locale/es';
-import {Platform} from 'react-native';
-
 export default class HELPERTextFormat {
   static formatDT(date) {
     const S_format = String(date).includes(':')

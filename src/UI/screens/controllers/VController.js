@@ -12,5 +12,9 @@ export default class VController {
     this.view.setState(state);
   }
 
+  static navigate(route) {
+    this.view.props.navigation.navigate(route);
+  }
+
   static _onInit() {}
 }

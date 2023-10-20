@@ -21,6 +21,10 @@ export default class VControllerHome extends VController {
     console.log(item);
   }
 
+  static onPressSearchBotton() {
+    this.navigate('VIEWSearch');
+  }
+
   static onPressLikeButtom(itemId) {
     alert('liked image: ' + itemId);
   }

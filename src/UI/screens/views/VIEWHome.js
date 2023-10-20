@@ -4,7 +4,7 @@ import {Dimensions, FlatList, Text, View, Image, Pressable} from 'react-native';
 import VControllerHome from '../controllers/VControllerHome';
 import AutoHeightImage from 'react-native-auto-height-image';
 import LinearGradient from 'react-native-linear-gradient';
-import {GUI_styles} from '../../styles/STYLESMain';
+import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
 import {Icon, Badge} from '@rneui/themed';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
 
@@ -21,7 +21,7 @@ export default class VIEWHome extends Component {
         <>
           <FlatList
             data={this.state.data}
-            bounces={true}
+            bounces={false}
             keyExtractor={item => {
               return item.id;
             }}
@@ -179,16 +179,39 @@ export default class VIEWHome extends Component {
     return (
       <View
         style={{
+          flex: 12,
+          flexDirection: 'row',
           backgroundColor: 'white',
           padding: 14,
         }}>
-        <Image
+        <View
           style={{
-            height: 48,
-            width: 213,
+            flex: 10,
+          }}>
+          <Image
+            style={{
+              height: 48,
+              width: 213,
+            }}
+            source={require('../../../assets/img/logo-header.png')}
+          />
+        </View>
+        <Pressable
+          onPress={() => {
+            this.VController.onPressSearchBotton();
           }}
-          source={require('../../../assets/img/logo-header.png')}
-        />
+          style={{
+            flex: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Icon
+            name="search-outline"
+            type="ionicon"
+            color={GUI_colors.COLOR_PRIMARY}
+            size={40}
+          />
+        </Pressable>
       </View>
     );
   }
