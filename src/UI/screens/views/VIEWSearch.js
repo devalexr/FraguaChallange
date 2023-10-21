@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Keyboard, Pressable, Text, View} from 'react-native';
+import {Keyboard, Platform, Pressable, Text, View} from 'react-native';
 import VIEWPagination from './VIEWPagination';
 import VControllerSearch from '../controllers/VControllerSearch';
 import {UNPhotoItem} from '../../components/views/UNPhotoItem';
@@ -60,7 +60,7 @@ export default class VIEWSearch extends VIEWPagination {
           zIndex: 10,
           borderTopColor: GUI_colors.COLOR_BORDER,
           borderTopWidth: 1,
-          marginBottom: 80,
+          marginBottom: Platform.OS === 'android' ? 60 : 80,
         }}>
         <View
           style={{
@@ -101,10 +101,14 @@ export default class VIEWSearch extends VIEWPagination {
             containerStyle={{
               backgroundColor: 'white',
               marginHorizontal: -2,
+              marginBottom: 10,
+            }}
+            listContainerStyle={{
+              marginHorizontal: -8,
             }}
             style={[
               {
-                height: 50,
+                height: 44,
                 backgroundColor: GUI_colors.COLOR_BACKGROUND_GRAY,
                 borderRadius: 30,
                 paddingLeft: 12,
@@ -115,6 +119,7 @@ export default class VIEWSearch extends VIEWPagination {
               borderRadius: 30,
               margin: 10,
               marginRight: 70,
+              marginBottom: Platform.OS === 'android' ? 10 : 0,
             }}
             data={this.state.searchSuggestions}
             value={this.state.query}

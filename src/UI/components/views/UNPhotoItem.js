@@ -10,7 +10,6 @@ import {UIImageLoading} from '../UIImages';
 export class UNPhotoItem extends Component {
   render() {
     const item = this.props.item;
-
     return (
       <View
         style={[
@@ -29,7 +28,7 @@ export class UNPhotoItem extends Component {
           <UIImageLoading
             width={Dimensions.get('window').width - 40}
             source={{uri: item.urls.small}}
-            height={200}
+            height={300}
             style={{
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
@@ -63,7 +62,7 @@ export class UNPhotoItem extends Component {
           style={{
             flexDirection: 'row',
             padding: 12,
-            height: 100,
+            height: 80,
             alignItems: 'center',
             flex: 12,
           }}>
@@ -71,7 +70,7 @@ export class UNPhotoItem extends Component {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              flex: 10,
+              flex: 9,
             }}>
             <Pressable
               onPress={() => {
@@ -83,7 +82,7 @@ export class UNPhotoItem extends Component {
                   marginRight: 10,
                 }}
                 source={{
-                  uri: item.user.profile_image.medium,
+                  uri: item.user.profile_image.large,
                   height: 60,
                   width: 60,
                 }}
@@ -96,17 +95,18 @@ export class UNPhotoItem extends Component {
                 }}>
                 <Text style={GUI_styles.fontBold}>{item.user.name}</Text>
               </Pressable>
-              <Text style={GUI_styles.fontSmallMuted}>
+              <Text style={[GUI_styles.fontSmallMuted, {fontSize: 10}]}>
                 {HELPERTextFormat.formatDT(item.created_at)}
               </Text>
             </View>
           </View>
           <View
             style={{
-              flex: 2,
+              flex: 3,
               alignItems: 'center',
               justifyContent: 'center',
               flexDirection: 'row',
+              paddingLeft: 40,
             }}>
             <Icon
               size={36}

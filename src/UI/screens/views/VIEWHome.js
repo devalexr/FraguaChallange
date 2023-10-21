@@ -47,10 +47,10 @@ export default class VIEWHome extends VIEWPagination {
           }}>
           <Image
             style={{
-              height: 48,
-              width: 213,
+              height: 41,
+              width: 182,
             }}
-            source={require('../../../assets/img/logo-header.png')}
+            source={require('../../../assets/img/logo-small.png')}
           />
         </View>
         <Pressable
