@@ -84,7 +84,13 @@ export default class VControllerSearch extends VControllerPagination {
     );
   }
 
-  static onSearchInputLostFocus() {}
+  static onSearchInputLostFocus() {
+    setTimeout(() => {
+      this.setState({
+        showingSuggestions: false,
+      });
+    }, 3000);
+  }
 
   static onPressSearchButton() {
     this.search();
@@ -95,7 +101,7 @@ export default class VControllerSearch extends VControllerPagination {
   }
 
   static onPressLikeButton(itemId) {
-    alert('liked image: ' + itemId);
+    
   }
 
   static onPressUser(userId) {

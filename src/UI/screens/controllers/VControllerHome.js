@@ -17,7 +17,7 @@ export default class VControllerHome extends VControllerPagination {
   }
 
   static onPressLikeButton(itemId) {
-    alert('liked image: ' + itemId);
+    
   }
 
   static onPressUser(userId) {

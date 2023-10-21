@@ -16,7 +16,9 @@ export class UNLikeIcon extends Component {
 
   render() {
     const item = this.props.item;
-
+    const count = !this.state.liked
+      ? this.state.count + 1
+      : this.state.count - 1;
     return (
       <>
         <Icon
@@ -29,7 +31,7 @@ export class UNLikeIcon extends Component {
           onPress={() => {
             this.setState({
               liked: !this.state.liked,
-              count: this.state.count + 1,
+              count: count,
             });
 
             this.props.onPress(item.id);
