@@ -89,7 +89,7 @@ export default class VIEWSearch extends VIEWPagination {
                 name="search-outline"
                 type="ionicon"
                 color={GUI_colors.COLOR_PRIMARY}
-                size={50}
+                size={44}
               />
             </Pressable>
           </View>

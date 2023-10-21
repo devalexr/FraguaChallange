@@ -26,12 +26,8 @@ export default class VControllerPagination extends VController {
 
   //=============PAGINATION ===============
   static async _paginate() {
-    if (this._paginating) {
-      return;
-    }
-
-    if (this._pageFinal !== null && this._page > this._pageFinal) {
-      return;
+    if (!this.__canPaginate()) {
+      return false;
     }
 
     this._paginating = true;
@@ -48,29 +44,43 @@ export default class VControllerPagination extends VController {
       {
         data: newStateData,
         loading: false,
+        loadingMore: false,
       },
       () => {
-        this._page++;
-        this._paginating = false;
+        setTimeout(() => {
+          this._page++;
+          this._paginating = false;
+        }, 3000);
       },
     );
   }
 
   //============ PAGINATION EVENTS =========
   static onLoadMore() {
+    if (!this.__canPaginate()) {
+      return false;
+    }
+
     this.setState(
       {
         loadingMore: true,
       },
       async () => {
         await this._paginate();
-        setTimeout(() => {
-          this.setState({
-            loadingMore: false,
-          });
-        }, 1000);
       },
     );
+  }
+
+  static __canPaginate() {
+    if (this._paginating) {
+      return false;
+    }
+
+    if (this._pageFinal !== null && this._page > this._pageFinal) {
+      return false;
+    }
+
+    return true;
   }
 
   static async getPaginationDATA() {

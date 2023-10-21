@@ -83,8 +83,8 @@ export class UNPhotoItem extends Component {
                 }}
                 source={{
                   uri: item.user.profile_image.large,
-                  height: 60,
-                  width: 60,
+                  height: 50,
+                  width: 50,
                 }}
               />
             </Pressable>

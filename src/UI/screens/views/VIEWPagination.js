@@ -28,12 +28,16 @@ export default class VIEWPagination extends Component {
               return this.renderLoadingFooter();
             }}
             ListEmptyComponent={() => {
-              //return this.renderEmptyLIST();
+              return this.renderEmpty();
             }}
             contentContainerStyle={
               this.state.data?.length > 0 ? {} : {flex: 12}
             }
-            onScrollEndDrag={e => {}}
+            ListFooterComponentStyle={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingBottom: 80,
+            }}
           />
         </View>
       );
@@ -56,16 +60,25 @@ export default class VIEWPagination extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            height: 80,
+            marginTop: 40,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <ActivityIndicator size="large" color={GUI_colors.COLOR_PRIMARY} />
+          <ActivityIndicator
+            style={{marginTop: -80}}
+            size="large"
+            color={GUI_colors.COLOR_PRIMARY}
+          />
         </View>
       );
     } else {
       return null;
     }
+  }
+
+  renderEmpty() {
+    return null;
   }
 
   renderHeader() {

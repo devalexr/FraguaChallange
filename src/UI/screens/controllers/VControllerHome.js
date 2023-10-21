@@ -16,7 +16,7 @@ export default class VControllerHome extends VControllerPagination {
     this.navigate('VIEWSearch');
   }
 
-  static onPressLikeButton(itemId) {
+  static onPressLikeButtom(itemId) {
     alert('liked image: ' + itemId);
   }
 
