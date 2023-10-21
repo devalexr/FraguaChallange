@@ -31,23 +31,22 @@ export default class VControllerPagination extends VController {
 
     this._paginating = true;
 
-    const requestNewData = this.getPaginationDATA();
-    const data = this._DATAFilter(this.view.state.data.concat(requestNewData));
+    const stateData = this.view.state.data;
+    const requestData = await this.getPaginationDATA();
+    let newStateData = stateData.concat(requestData);
+    //remove duplicated elements
+    newStateData = newStateData.filter(
+      (a, index, b) => index === b.findIndex(t => t.id === a.id),
+    );
+
     this.setState(
       {
-        data: data,
+        data: newStateData,
       },
       () => {
         this._page++;
         this._paginating = false;
       },
-    );
-  }
-
-  static _DATAFilter(data) {
-    //remove duplicated elements
-    return data.filter(
-      (a, index, b) => index === b.findIndex(t => t.id === a.id),
     );
   }
 
