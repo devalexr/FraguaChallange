@@ -29,9 +29,6 @@ export default class VIEWPagination extends Component {
             ListEmptyComponent={() => {
               return this.renderEmpty();
             }}
-            contentContainerStyle={
-              this.state.data?.length > 0 ? {} : {flex: 12}
-            }
             ListFooterComponentStyle={{
               justifyContent: 'center',
               alignItems: 'center',

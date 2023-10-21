@@ -57,7 +57,7 @@ export default class ROUTERTabBottomNavigation extends React.Component {
             return null;
           },
           tabBarStyle: {
-            height: 60,
+            height: 70,
           },
         })}>
         <Tab.Screen

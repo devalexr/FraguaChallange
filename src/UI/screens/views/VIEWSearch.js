@@ -7,6 +7,7 @@ import {UNPhotoItem} from '../../components/views/UNPhotoItem';
 import AutocompleteInput from 'react-native-autocomplete-input';
 import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
 import {Icon} from '@rneui/themed';
+import {UIFullScreenMessage} from '../../components/UIImages';
 export default class VIEWSearch extends VIEWPagination {
   VController = VControllerSearch;
 
@@ -32,6 +33,33 @@ export default class VIEWSearch extends VIEWPagination {
         }}
       />
     );
+  }
+
+  renderEmpty() {
+    if (!this.state.searched) {
+      return (
+        <UIFullScreenMessage
+          title="Buscar en Unsplash"
+          message="La fuente de imágenes de internet.
+          Con recursos de creadores de todo el mundo."
+          icon={{
+            type: 'ionicon',
+            name: 'search-outline',
+          }}
+        />
+      );
+    } else {
+      return (
+        <UIFullScreenMessage
+          title="Sin resultados"
+          message="Desafortunadamente no encontramos resultados para la búsqueda solicitada."
+          icon={{
+            type: 'entypo',
+            name: 'emoji-sad',
+          }}
+        />
+      );
+    }
   }
 
   renderSearchSuggestion(item) {

@@ -7,6 +7,7 @@ export default class VControllerSearch extends VControllerPagination {
     loading: true,
     loadingMore: false,
     query: '',
+    searched: false,
     searchSuggestions: [
       {
         value: 'Dogs',
@@ -36,14 +37,17 @@ export default class VControllerSearch extends VControllerPagination {
     if (!query) {
       return;
     }
+
     this.setState(
       {
         data: [],
         showingSuggestions: false,
         loading: true,
+        searched: true,
       },
       () => {
         this._page = 1;
+        this._pageFinal = null;
         this._paginate();
       },
     );

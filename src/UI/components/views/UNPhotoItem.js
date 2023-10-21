@@ -6,6 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
 import {Icon} from '@rneui/themed';
 import {UIImageLoading} from '../UIImages';
+import {UNLikeIcon} from './UNLikeIcon';
 
 export class UNPhotoItem extends Component {
   render() {
@@ -108,22 +109,12 @@ export class UNPhotoItem extends Component {
               flexDirection: 'row',
               paddingLeft: 40,
             }}>
-            <Icon
-              size={36}
-              name="heart-outline"
-              type="material-community"
-              color={GUI_colors.COLOR_PRIMARY}
+            <UNLikeIcon
+              item={item}
               onPress={() => {
                 this.props.onPressLikeButton(item.id);
               }}
             />
-            <Text
-              style={[
-                GUI_styles.fontSmallMuted,
-                {marginLeft: 2, fontSize: 10},
-              ]}>
-              {HELPERTextFormat.formatNumber(item.likes)}
-            </Text>
           </View>
         </View>
       </View>
