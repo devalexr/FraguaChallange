@@ -1,69 +1,9 @@
 import VModelHome from '../models/VModelHome';
-import VController from './VController';
+import VControllerPagination from './VControllerPagination';
 
-export default class VControllerHome extends VController {
-  static _page = 0;
-  static _paginating = false;
-
-  static initialState = {
-    data: [],
-    loading: true,
-    loadingMore: false,
-  };
-
-  static async _onInit() {
-    const data = await VModelHome.getPhotos(this._page);
-    this.setState(
-      {
-        data: data,
-        loading: false,
-      },
-      () => {
-        this._page++;
-      },
-    );
-  }
-
-  //=============PAGINATION ===============
-  static async _paginate() {
-    if (this._paginating) {
-      return;
-    }
-
-    this._paginating = true;
-
-    const requestNewData = await VModelHome.getPhotos(this._page);
-    let data = this.view.state.data.concat(requestNewData);
-    //remove duplicated elements
-    data = data.filter(
-      (a, index, b) => index === b.findIndex(t => t.id === a.id),
-    );
-    this.setState(
-      {
-        data: data,
-      },
-      () => {
-        this._page++;
-        this._paginating = false;
-      },
-    );
-  }
-
-  //============ PAGINATION EVENTS =========
-  static onLoadMore() {
-    this.setState(
-      {
-        loadingMore: true,
-      },
-      async () => {
-        await this._paginate();
-        setTimeout(() => {
-          this.setState({
-            loadingMore: false,
-          });
-        }, 1000);
-      },
-    );
+export default class VControllerHome extends VControllerPagination {
+  static async getPaginationDATA() {
+    return await VModelHome.getPhotos(this._page);
   }
 
   //=============== VIEW EVENTS =============

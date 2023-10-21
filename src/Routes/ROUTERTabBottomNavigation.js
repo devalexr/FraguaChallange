@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from '@rneui/themed';
 import {GUI_colors, GUI_styles} from '../UI/styles/STYLESMain';
 import VIEWHome from '../UI/screens/views/VIEWHome';
-import VIEWExplore from '../UI/screens/views/VIEWExplore';
+import VIEWTopics from '../UI/screens/views/VIEWTopics';
 import VIEWSearch from '../UI/screens/views/VIEWSearch';
 import VIEWFavorites from '../UI/screens/views/VIEWFavorites';
 
@@ -27,12 +27,12 @@ export default class ROUTERTabBottomNavigation extends React.Component {
       },
       title: 'Buscar',
     },
-    VIEWExplore: {
+    VIEWTopics: {
       icon: {
-        type: 'font-awesome',
-        name: 'wpexplorer',
+        type: 'material-community',
+        name: 'fire',
       },
-      title: 'Explorar',
+      title: 'Topics',
     },
     VIEWFavorites: {
       icon: {
@@ -67,8 +67,8 @@ export default class ROUTERTabBottomNavigation extends React.Component {
         />
         <Tab.Screen
           //options={{headerShown: false}}
-          name="VIEWExplore"
-          component={VIEWExplore}
+          name="VIEWTopics"
+          component={VIEWTopics}
         />
         <Tab.Screen
           //options={{headerShown: false}}

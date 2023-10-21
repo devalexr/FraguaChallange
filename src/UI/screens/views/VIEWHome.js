@@ -1,63 +1,20 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {Component} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  Text,
-  View,
-  Image,
-  Pressable,
-  ActivityIndicator,
-} from 'react-native';
+import React from 'react';
+import {Dimensions, Text, View, Image, Pressable} from 'react-native';
 import VControllerHome from '../controllers/VControllerHome';
-import AutoHeightImage from 'react-native-auto-height-image';
 import LinearGradient from 'react-native-linear-gradient';
 import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
 import {Icon, Badge} from '@rneui/themed';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
-import { UIImageLoading } from '../../components/UIImages';
+import {UIImageLoading} from '../../components/UIImages';
+import VIEWPagination from './VIEWPagination';
 
-export default class VIEWHome extends Component {
+export default class VIEWHome extends VIEWPagination {
+  VController = VControllerHome;
+
   constructor(props) {
     super(props);
-    this.VController = VControllerHome;
     this.VController.setView(this);
-  }
-
-  render() {
-    if (!this.state.loading) {
-      return (
-        <View>
-          {this.renderHeader()}
-          <FlatList
-            data={this.state.data}
-            bounces={false}
-            keyExtractor={item => {
-              return item.id;
-            }}
-            renderItem={item => {
-              item = item.item;
-              return this.renderItem(item);
-            }}
-            onEndReached={() => {
-              this.VController.onLoadMore();
-            }}
-            ListFooterComponent={() => {
-              return this.renderLoadingFooter();
-            }}
-            ListEmptyComponent={() => {
-              //return this.renderEmptyLIST();
-            }}
-            contentContainerStyle={
-              this.state.data?.length > 0 ? {} : {flex: 12}
-            }
-            onScrollEndDrag={e => {}}
-          />
-        </View>
-      );
-    } else {
-      return <Text>cargando....</Text>;
-    }
   }
 
   renderItem(item) {
@@ -219,22 +176,5 @@ export default class VIEWHome extends Component {
         </Pressable>
       </View>
     );
-  }
-
-  renderLoadingFooter() {
-    if (this.state.loadingMore) {
-      return (
-        <View
-          style={{
-            paddingVertical: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <ActivityIndicator size="large" color={GUI_colors.COLOR_PRIMARY} />
-        </View>
-      );
-    } else {
-      return null;
-    }
   }
 }
