@@ -8,8 +8,10 @@ export default class VController {
     this._onInit();
   }
 
-  static setState(state) {
-    this.view.setState(state);
+  static setState(state, callback = () => {}) {
+    this.view.setState(state, () => {
+      callback();
+    });
   }
 
   static navigate(route) {

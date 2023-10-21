@@ -14,7 +14,7 @@ export default class APIService {
     return response;
   }
 
-  static async get(url, parameters, config = {}) {
+  static async get(url, parameters = {}, config = {}) {
     const URL_REQUEST = this._createURLRequest(url, parameters);
     const cacheRequest = config?.cache;
 
@@ -49,13 +49,18 @@ export default class APIService {
   }
 
   static _createURLRequest(url, parameters = {}) {
-    parameters = this._requestInjectParameters(parameters);
+    this._requestInjectParameters(parameters);
+
     let url_parameters = '';
 
     if (parameters) {
       url_parameters = '?';
 
       Object.keys(parameters).forEach(function (k) {
+        if (parameters[k] === null) {
+          return;
+        }
+
         url_parameters += k + '=' + parameters[k] + '&';
       });
     }
@@ -63,9 +68,7 @@ export default class APIService {
     return this.getAPIBaseURL() + url + url_parameters;
   }
 
-  static _requestInjectParameters(parameters) {
-    return parameters;
-  }
+  static _requestInjectParameters(parameters) {}
 
   //====================== INIT AXIOS ================================
 

@@ -1,6 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Dimensions, FlatList, Text, View, Image, Pressable} from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ActivityIndicator,
+} from 'react-native';
 import VControllerHome from '../controllers/VControllerHome';
 import AutoHeightImage from 'react-native-auto-height-image';
 import LinearGradient from 'react-native-linear-gradient';
@@ -18,26 +26,23 @@ export default class VIEWHome extends Component {
   render() {
     if (!this.state.loading) {
       return (
-        <>
+        <View>
+          {this.renderHeader()}
           <FlatList
             data={this.state.data}
             bounces={false}
             keyExtractor={item => {
               return item.id;
             }}
-            stickyHeaderIndices={[0]}
-            ListHeaderComponent={() => {
-              return this.renderHeader();
-            }}
             renderItem={item => {
               item = item.item;
               return this.renderItem(item);
             }}
             onEndReached={() => {
-              //this.paginarLM();
+              this.VController.onLoadMore();
             }}
             ListFooterComponent={() => {
-              //return this.renderLoadingFooter();
+              return this.renderLoadingFooter();
             }}
             ListEmptyComponent={() => {
               //return this.renderEmptyLIST();
@@ -47,7 +52,7 @@ export default class VIEWHome extends Component {
             }
             onScrollEndDrag={e => {}}
           />
-        </>
+        </View>
       );
     } else {
       return <Text>cargando....</Text>;
@@ -179,7 +184,6 @@ export default class VIEWHome extends Component {
     return (
       <View
         style={{
-          flex: 12,
           flexDirection: 'row',
           backgroundColor: 'white',
           padding: 14,
@@ -214,5 +218,22 @@ export default class VIEWHome extends Component {
         </Pressable>
       </View>
     );
+  }
+
+  renderLoadingFooter() {
+    if (this.state.loadingMore) {
+      return (
+        <View
+          style={{
+            paddingVertical: 20,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <ActivityIndicator size="large" color={GUI_colors.COLOR_PRIMARY} />
+        </View>
+      );
+    } else {
+      return null;
+    }
   }
 }
