@@ -157,6 +157,9 @@ export default class VIEWSearch extends VIEWPagination {
             onSubmitEditing={() => {
               this.VController.onSearch();
             }}
+            onBlur={() => {
+              this.VController.onSearchInputLostFocus();
+            }}
             flatListProps={{
               keyExtractor: (_, idx) => idx,
               renderItem: ({item}) => {

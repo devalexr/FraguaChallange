@@ -8,18 +8,19 @@ export default class VControllerSearch extends VControllerPagination {
     loadingMore: false,
     query: '',
     searched: false,
-    searchSuggestions: [
-      {
-        value: 'Dogs',
-        created: 102354,
-      },
-      {
-        value: 'Dropbox',
-        created: 102354,
-      },
-    ],
-    showingSuggestions: true,
+    searchSuggestions: [],
+    showingSuggestions: false,
   };
+
+  static async _showSearchHistory() {
+    const query = this.view.state.query;
+    const searchSuggestions = await VModelSearch.getSearchHistory(query);
+
+    this.setState({
+      searchSuggestions: searchSuggestions,
+      showingSuggestions: true,
+    });
+  }
 
   static async getPaginationDATA() {
     const query = this.view.state.query;
@@ -37,6 +38,8 @@ export default class VControllerSearch extends VControllerPagination {
     if (!query) {
       return;
     }
+
+    VModelSearch.saveSearchQuery(query);
 
     this.setState(
       {
@@ -59,9 +62,14 @@ export default class VControllerSearch extends VControllerPagination {
   }
 
   static onChageSearchQuery(query) {
-    this.setState({
-      query: query,
-    });
+    this.setState(
+      {
+        query: query,
+      },
+      () => {
+        this._showSearchHistory();
+      },
+    );
   }
 
   static onPressSearchSuggestion(query) {
@@ -75,6 +83,8 @@ export default class VControllerSearch extends VControllerPagination {
       },
     );
   }
+
+  static onSearchInputLostFocus() {}
 
   static onPressSearchButton() {
     this.search();
