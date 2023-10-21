@@ -1,23 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Keyboard, Pressable, Text, View} from 'react-native';
 import VIEWPagination from './VIEWPagination';
 import VControllerSearch from '../controllers/VControllerSearch';
 import {UNPhotoItem} from '../../components/views/UNPhotoItem';
 import AutocompleteInput from 'react-native-autocomplete-input';
 import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
+import {Icon} from '@rneui/themed';
 export default class VIEWSearch extends VIEWPagination {
   VController = VControllerSearch;
 
   constructor(props) {
     super(props);
     this.VController.setView(this);
-  }
-
-  componentDidMount() {
-    //super.componentDidMount();
-    //this.searchInput.focus();
-    console.log(this.searchInput);
   }
 
   //======================== RENDER =================
@@ -32,8 +27,8 @@ export default class VIEWSearch extends VIEWPagination {
         onPressUser={username => {
           this.VController.onPressUser(item.user.name);
         }}
-        onPressLikeButtom={itemId => {
-          this.VController.onPressLikeButtom(itemId);
+        onPressLikeButton={itemId => {
+          this.VController.onPressLikeButton(itemId);
         }}
       />
     );
@@ -43,6 +38,7 @@ export default class VIEWSearch extends VIEWPagination {
     return (
       <Pressable
         onPress={() => {
+          Keyboard.dismiss();
           this.VController.onPressSearchSuggestion(item.value);
         }}
         style={{
@@ -75,6 +71,28 @@ export default class VIEWSearch extends VIEWPagination {
             top: 0,
             zIndex: 1,
           }}>
+          <View
+            style={{
+              position: 'absolute',
+              top: 10,
+              right: 10,
+              zIndex: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Pressable
+              onPress={() => {
+                Keyboard.dismiss();
+                this.VController.onPressSearchButton();
+              }}>
+              <Icon
+                name="search-outline"
+                type="ionicon"
+                color={GUI_colors.COLOR_PRIMARY}
+                size={50}
+              />
+            </Pressable>
+          </View>
           <AutocompleteInput
             autoFocus={true}
             returnKeyType="search"
@@ -96,13 +114,9 @@ export default class VIEWSearch extends VIEWPagination {
             inputContainerStyle={{
               borderRadius: 30,
               margin: 10,
+              marginRight: 70,
             }}
-            data={[
-              {
-                value: 'Dogs',
-                created: 102354,
-              },
-            ]}
+            data={this.state.searchSuggestions}
             value={this.state.query}
             onChangeText={query => {
               this.VController.onChageSearchQuery(query);

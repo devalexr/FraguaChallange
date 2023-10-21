@@ -42,7 +42,7 @@ export const GUI_styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: GUI_colors.COLOR_BACKGROUND_GRAY,
     padding: 20,
   },
   shadow: {

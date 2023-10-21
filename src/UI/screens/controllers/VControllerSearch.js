@@ -7,6 +7,16 @@ export default class VControllerSearch extends VControllerPagination {
     loading: true,
     loadingMore: false,
     query: '',
+    searchSuggestions: [
+      {
+        value: 'Dogs',
+        created: 102354,
+      },
+      {
+        value: 'Dropbox',
+        created: 102354,
+      },
+    ],
     showingSuggestions: true,
   };
 
@@ -17,6 +27,7 @@ export default class VControllerSearch extends VControllerPagination {
     }
 
     const data = await VModelSearch.search(this.view.state.query, this._page);
+    this._pageFinal = data.total_pages;
     return data.results;
   }
 
@@ -28,6 +39,8 @@ export default class VControllerSearch extends VControllerPagination {
     this.setState(
       {
         data: [],
+        showingSuggestions: false,
+        loading: true,
       },
       () => {
         this._page = 0;
@@ -59,11 +72,15 @@ export default class VControllerSearch extends VControllerPagination {
     );
   }
 
+  static onPressSearchButton() {
+    this.search();
+  }
+
   static onPressItem(item) {
     console.log(item);
   }
 
-  static onPressLikeButtom(itemId) {
+  static onPressLikeButton(itemId) {
     alert('liked image: ' + itemId);
   }
 

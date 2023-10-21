@@ -26,8 +26,8 @@ export default class VIEWHome extends VIEWPagination {
         onPressUser={username => {
           this.VController.onPressUser(item.user.name);
         }}
-        onPressLikeButtom={itemId => {
-          this.VController.onPressLikeButtom(itemId);
+        onPressLikeButton={itemId => {
+          this.VController.onPressLikeButton(itemId);
         }}
       />
     );

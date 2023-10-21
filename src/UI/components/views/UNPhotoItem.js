@@ -114,7 +114,7 @@ export class UNPhotoItem extends Component {
               type="material-community"
               color={GUI_colors.COLOR_PRIMARY}
               onPress={() => {
-                this.props.onPressLikeButtom(item.id);
+                this.props.onPressLikeButton(item.id);
               }}
             />
             <Text

@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {GUI_colors} from '../../styles/STYLESMain';
+import {UILoadingLarge} from '../../components/UIImages';
 
 export default class VIEWPagination extends Component {
   render() {
@@ -37,7 +38,16 @@ export default class VIEWPagination extends Component {
         </View>
       );
     } else {
-      return <Text>cargando....</Text>;
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: GUI_colors.COLOR_BACKGROUND_GRAY,
+          }}>
+          {this.renderHeader()}
+          <UILoadingLarge />
+        </View>
+      );
     }
   }
 

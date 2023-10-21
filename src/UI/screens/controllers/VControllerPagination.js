@@ -2,6 +2,7 @@ import VController from './VController';
 
 export default class VControllerPagination extends VController {
   static _page = 0;
+  static _pageFinal = null;
   static _paginating = false;
 
   static initialState = {
@@ -29,6 +30,10 @@ export default class VControllerPagination extends VController {
       return;
     }
 
+    if (this._pageFinal !== null && this._page > this._pageFinal) {
+      return;
+    }
+
     this._paginating = true;
 
     const stateData = this.view.state.data;
@@ -42,6 +47,7 @@ export default class VControllerPagination extends VController {
     this.setState(
       {
         data: newStateData,
+        loading: false,
       },
       () => {
         this._page++;

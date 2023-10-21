@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {Text, View, ActivityIndicator} from 'react-native';
 import AutoHeightImage from 'react-native-auto-height-image';
-import {GUI_colors} from '../styles/STYLESMain';
+import {GUI_colors, GUI_styles} from '../styles/STYLESMain';
 
 export class UIImageLoading extends Component {
   state = {
@@ -36,6 +36,29 @@ export class UIImageLoading extends Component {
             }}>
             <ActivityIndicator color={GUI_colors.COLOR_PRIMARY} size="small" />
           </View>
+        )}
+      </View>
+    );
+  }
+}
+
+export class UILoadingLarge extends Component {
+  render() {
+    return (
+      <View
+        style={[
+          GUI_styles.containerEC,
+          {
+            backgroundColor: this.props.color
+              ? this.props.color
+              : GUI_styles.containerEC.backgroundColor,
+          },
+        ]}>
+        <ActivityIndicator size="large" color={GUI_colors.COLOR_PRIMARY} />
+        {this.props?.title && (
+          <Text style={[GUI_styles.fontBR, {fontSize: 12, marginTop: 10}]}>
+            {this.props.title}
+          </Text>
         )}
       </View>
     );
