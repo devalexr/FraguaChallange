@@ -32,11 +32,7 @@ export default class VControllerPagination extends VController {
     this._paginating = true;
 
     const requestNewData = this.getPaginationDATA();
-    let data = this.view.state.data.concat(requestNewData);
-    //remove duplicated elements
-    data = data.filter(
-      (a, index, b) => index === b.findIndex(t => t.id === a.id),
-    );
+    const data = this._DATAFilter(this.view.state.data.concat(requestNewData));
     this.setState(
       {
         data: data,
@@ -45,6 +41,13 @@ export default class VControllerPagination extends VController {
         this._page++;
         this._paginating = false;
       },
+    );
+  }
+
+  static _DATAFilter(data) {
+    //remove duplicated elements
+    return data.filter(
+      (a, index, b) => index === b.findIndex(t => t.id === a.id),
     );
   }
 

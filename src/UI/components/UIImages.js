@@ -32,7 +32,7 @@ export class UIImageLoading extends Component {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              height: 300,
+              height: this.props.height,
             }}>
             <ActivityIndicator color={GUI_colors.COLOR_PRIMARY} size="small" />
           </View>

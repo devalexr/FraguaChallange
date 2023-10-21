@@ -36,6 +36,7 @@ export default class VIEWHome extends VIEWPagination {
           <UIImageLoading
             width={Dimensions.get('window').width - 40}
             source={{uri: item.urls.small}}
+            height={200}
             style={{
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
