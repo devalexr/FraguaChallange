@@ -26,8 +26,6 @@ export default class VControllerHome extends VController {
 
   //=============PAGINATION ===============
   static async _paginate() {
-    console.log('paginando', this._paginating);
-
     if (this._paginating) {
       return;
     }

@@ -15,6 +15,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
 import {Icon, Badge} from '@rneui/themed';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
+import { UIImageLoading } from '../../components/UIImages';
 
 export default class VIEWHome extends Component {
   constructor(props) {
@@ -75,7 +76,7 @@ export default class VIEWHome extends Component {
           onPress={() => {
             this.VController.onPressItem(item);
           }}>
-          <AutoHeightImage
+          <UIImageLoading
             width={Dimensions.get('window').width - 40}
             source={{uri: item.urls.small}}
             style={{
