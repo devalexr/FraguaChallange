@@ -1,7 +1,7 @@
 import VController from './VController';
 
 export default class VControllerPagination extends VController {
-  static _page = 0;
+  static _page = 1;
   static _pageFinal = null;
   static _paginating = false;
 
@@ -50,7 +50,7 @@ export default class VControllerPagination extends VController {
         setTimeout(() => {
           this._page++;
           this._paginating = false;
-        }, 3000);
+        }, 1000);
       },
     );
   }

@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
-import {Text} from 'react-native-paper';
 import {GUI_colors} from '../../styles/STYLESMain';
 import {UILoadingLarge} from '../../components/UIImages';
 

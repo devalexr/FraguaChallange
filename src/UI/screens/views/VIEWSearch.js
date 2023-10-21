@@ -104,7 +104,7 @@ export default class VIEWSearch extends VIEWPagination {
               marginBottom: 10,
             }}
             listContainerStyle={{
-              marginHorizontal: -8,
+              marginHorizontal: Platform.OS === 'android' ? -8 : 0,
             }}
             style={[
               {
@@ -119,7 +119,7 @@ export default class VIEWSearch extends VIEWPagination {
               borderRadius: 30,
               margin: 10,
               marginRight: 70,
-              marginBottom: Platform.OS === 'android' ? 10 : 0,
+              marginBottom: 10,
             }}
             data={this.state.searchSuggestions}
             value={this.state.query}

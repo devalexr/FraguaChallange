@@ -43,7 +43,7 @@ export default class VControllerSearch extends VControllerPagination {
         loading: true,
       },
       () => {
-        this._page = 0;
+        this._page = 1;
         this._paginate();
       },
     );
