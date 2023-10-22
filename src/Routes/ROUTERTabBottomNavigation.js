@@ -39,7 +39,7 @@ export default class ROUTERTabBottomNavigation extends React.Component {
         type: 'entypo',
         name: 'info-with-circle',
       },
-      title: 'Acerda de',
+      title: 'Acerca de',
     },
   };
 

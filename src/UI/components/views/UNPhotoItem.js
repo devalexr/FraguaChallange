@@ -27,7 +27,7 @@ export class UNPhotoItem extends Component {
           }}>
           <UIImageLoading
             width={Dimensions.get('window').width - 40}
-            source={{uri: item.urls.small}}
+            source={{uri: item.urls.thumb}}
             height={300}
             style={{
               borderTopLeftRadius: 8,

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {GUI_styles} from '../../styles/STYLESMain';
 
@@ -17,7 +17,16 @@ export default class VIEWPhotoDetail extends Component {
         style={{
           backgroundColor: 'black',
           flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
+        <Image
+          source={require('../../../assets/img/logo-small-black.png')}
+          style={{
+            height: 81,
+            width: 364,
+          }}
+        />
         <ImageView
           doubleTapToZoomEnabled={true}
           swipeToCloseEnabled={true}
