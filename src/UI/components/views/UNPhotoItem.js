@@ -1,10 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {Text, View, Pressable, Dimensions, Image} from 'react-native';
-import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
+import {GUI_styles} from '../../styles/STYLESMain';
 import LinearGradient from 'react-native-linear-gradient';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
-import {Icon} from '@rneui/themed';
 import {UIImageLoading} from '../UIImages';
 import {UNLikeIcon} from './UNLikeIcon';
 

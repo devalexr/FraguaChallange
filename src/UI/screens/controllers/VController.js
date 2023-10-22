@@ -14,8 +14,9 @@ export default class VController {
     });
   }
 
-  static navigate(route) {
-    this.view.props.navigation.navigate(route);
+  static navigate(route, props = {}) {
+    console.log(props);
+    this.view.props.navigation.navigate(route, props);
   }
 
   static _onInit() {}

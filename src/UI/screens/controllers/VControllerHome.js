@@ -9,16 +9,14 @@ export default class VControllerHome extends VControllerPagination {
   //=============== VIEW EVENTS =============
 
   static onPressItem(item) {
-    console.log(item);
+    this.navigate('VIEWPhotoDetail', {item: item});
   }
 
   static onPressSearchBotton() {
     this.navigate('VIEWSearch');
   }
 
-  static onPressLikeButton(itemId) {
-    
-  }
+  static onPressLikeButton(itemId) {}
 
   static onPressUser(userId) {
     alert('go to user profile: ' + userId);

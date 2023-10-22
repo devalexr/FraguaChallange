@@ -7,19 +7,22 @@ const Stack = createNativeStackNavigator();
 import ROUTERTabBottomNavigation from './ROUTERTabBottomNavigation';
 import PAGEError from '../UI/pages/PAGEError';
 import PAGEInit from '../UI/pages/PAGEInit';
+import VIEWPhotoDetail from '../UI/screens/views/VIEWPhotoDetail';
+import {Platform} from 'react-native';
 
 export default class ROUTERMain extends React.Component {
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="init"
+          initialRouteName={Platform.OS === 'android' ? 'init' : 'home'}
           screenOptions={{
             headerShown: false,
           }}>
           <Stack.Screen name="home" component={ROUTERTabBottomNavigation} />
           <Stack.Screen name="init" component={PAGEInit} />
           <Stack.Screen name="error" component={PAGEError} />
+          <Stack.Screen name="VIEWPhotoDetail" component={VIEWPhotoDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     );

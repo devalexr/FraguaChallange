@@ -65,21 +65,9 @@ export default class ROUTERTabBottomNavigation extends React.Component {
           name="VIEWHome"
           component={VIEWHome}
         />
-        <Tab.Screen
-          //options={{headerShown: false}}
-          name="VIEWTopics"
-          component={VIEWTopics}
-        />
-        <Tab.Screen
-          //options={{headerShown: false}}
-          name="VIEWSearch"
-          component={VIEWSearch}
-        />
-        <Tab.Screen
-          //options={{headerShown: false}}
-          name="VIEWFavorites"
-          component={VIEWFavorites}
-        />
+        <Tab.Screen name="VIEWTopics" component={VIEWTopics} />
+        <Tab.Screen name="VIEWSearch" component={VIEWSearch} />
+        <Tab.Screen name="VIEWFavorites" component={VIEWFavorites} />
       </Tab.Navigator>
     );
   }

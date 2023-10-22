@@ -97,12 +97,10 @@ export default class VControllerSearch extends VControllerPagination {
   }
 
   static onPressItem(item) {
-    console.log(item);
+    this.navigate('VIEWPhotoDetail', {item: item});
   }
 
-  static onPressLikeButton(itemId) {
-    
-  }
+  static onPressLikeButton(itemId) {}
 
   static onPressUser(userId) {
     alert('go to user profile: ' + userId);
