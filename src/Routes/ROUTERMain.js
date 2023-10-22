@@ -15,7 +15,7 @@ export default class ROUTERMain extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={Platform.OS === 'android' ? 'init' : 'home'}
+          initialRouteName={'init'}
           screenOptions={{
             headerShown: false,
           }}>

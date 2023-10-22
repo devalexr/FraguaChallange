@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, Dimensions} from 'react-native';
+import {View, Image, Dimensions, Platform} from 'react-native';
 import {ROUTERNavigation} from '../../Routes/ROUTERMain';
 import {GUI_styles} from '../styles/STYLESMain';
 
@@ -11,9 +11,13 @@ export default class PAGEInit extends Component {
 
   //===================== LIFECICLES ===========================
   componentDidMount() {
-    setTimeout(() => {
-      this.props.navigation.navigate('home');
-    }, 1000);
+    if (Platform.OS === 'android') {
+      setTimeout(() => {
+        this.props.navigation.navigate('home');
+      }, 1000);
+    }
+
+    this.props.navigation.navigate('home');
   }
 
   render() {
