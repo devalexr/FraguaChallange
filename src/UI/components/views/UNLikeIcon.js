@@ -2,7 +2,7 @@
 import {Icon} from '@rneui/themed';
 import React, {Component} from 'react';
 import {GUI_colors, GUI_styles} from '../../styles/STYLESMain';
-import {Text} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import HELPERTextFormat from '../../helpers/HELPERTextFormat';
 
 export class UNLikeIcon extends Component {
@@ -20,28 +20,36 @@ export class UNLikeIcon extends Component {
       ? this.state.count + 1
       : this.state.count - 1;
     return (
-      <>
-        <Icon
-          size={36}
-          name="heart-outline"
-          type="material-community"
-          color={
-            this.state.liked ? GUI_colors.COLOR_RED : GUI_colors.COLOR_PRIMARY
-          }
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        }}>
+        <Pressable
           onPress={() => {
             this.setState({
               liked: !this.state.liked,
               count: count,
             });
-
             this.props.onPress(item.id);
-          }}
-        />
-        <Text
-          style={[GUI_styles.fontSmallMuted, {marginLeft: 2, fontSize: 10}]}>
-          {HELPERTextFormat.formatNumber(this.state.count)}
-        </Text>
-      </>
+          }}>
+          <Icon
+            size={36}
+            name="heart-outline"
+            type="material-community"
+            color={
+              this.state.liked ? GUI_colors.COLOR_RED : GUI_colors.COLOR_PRIMARY
+            }
+          />
+        </Pressable>
+        <View style={{}}>
+          <Text
+            style={[GUI_styles.fontSmallMuted, {marginLeft: 2, fontSize: 10}]}>
+            {HELPERTextFormat.formatNumber(this.state.count)}
+          </Text>
+        </View>
+      </View>
     );
   }
 }

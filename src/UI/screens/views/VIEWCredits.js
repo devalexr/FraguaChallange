@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
-export default class VIEWFavorites extends Component {
+export default class VIEWCredits extends Component {
   render() {
-    return <Text>VIEWFavorites</Text>;
+    return <Text>VIEWCredits</Text>;
   }
 }

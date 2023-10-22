@@ -103,9 +103,6 @@ export class UNPhotoItem extends Component {
           <View
             style={{
               flex: 3,
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'row',
               paddingLeft: 40,
             }}>
             <UNLikeIcon

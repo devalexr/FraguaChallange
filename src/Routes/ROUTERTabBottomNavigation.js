@@ -7,7 +7,7 @@ import {GUI_colors, GUI_styles} from '../UI/styles/STYLESMain';
 import VIEWHome from '../UI/screens/views/VIEWHome';
 import VIEWTopics from '../UI/screens/views/VIEWTopics';
 import VIEWSearch from '../UI/screens/views/VIEWSearch';
-import VIEWFavorites from '../UI/screens/views/VIEWFavorites';
+import VIEWCredits from '../UI/screens/views/VIEWCredits';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,12 +34,12 @@ export default class ROUTERTabBottomNavigation extends React.Component {
       },
       title: 'Topics',
     },
-    VIEWFavorites: {
+    VIEWCredits: {
       icon: {
-        type: 'material-community',
-        name: 'heart-outline',
+        type: 'entypo',
+        name: 'info-with-circle',
       },
-      title: 'Favoritos',
+      title: 'Creditos',
     },
   };
 
@@ -67,7 +67,7 @@ export default class ROUTERTabBottomNavigation extends React.Component {
         />
         <Tab.Screen name="VIEWTopics" component={VIEWTopics} />
         <Tab.Screen name="VIEWSearch" component={VIEWSearch} />
-        <Tab.Screen name="VIEWFavorites" component={VIEWFavorites} />
+        <Tab.Screen name="VIEWCredits" component={VIEWCredits} />
       </Tab.Navigator>
     );
   }

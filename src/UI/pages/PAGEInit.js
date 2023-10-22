@@ -1,9 +1,7 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Image, Dimensions} from 'react-native';
 import {ROUTERNavigation} from '../../Routes/ROUTERMain';
-import {UILoadingLarge} from '../components/UIImages';
-import {GUI_colors} from '../styles/STYLESMain';
+import {GUI_styles} from '../styles/STYLESMain';
 
 export default class PAGEInit extends Component {
   constructor(props) {
@@ -13,17 +11,21 @@ export default class PAGEInit extends Component {
 
   //===================== LIFECICLES ===========================
   componentDidMount() {
-    this.props.navigation.navigate('home');
+    setTimeout(() => {
+      this.props.navigation.navigate('home');
+    }, 1000);
   }
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: GUI_colors.COLOR_BACKGROUND_GRAY,
-        }}>
-        <UILoadingLarge />
+      <View style={GUI_styles.containerEC}>
+        <Image
+          source={require('../../assets/img/splash.png')}
+          style={{
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
+          }}
+        />
       </View>
     );
   }
