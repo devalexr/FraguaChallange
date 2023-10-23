@@ -1,79 +1,93 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Antes de iniciar
 
-# Getting Started
+> **Note**: Asegúrate de tener instalado el ambiente de desarrollo para correr aplicaciones en la versión 0.72 de React Native. Puedes seguir el siguiente tutorial: [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) _Es de suma importancia tener la versión mas reciente de Xcode y Android Studio, ya que en caso contrario se pueden presentar errores._
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Paso 1: Clonar el repositorio
 
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
+Puedes descargar directamente el repositorio desde la opción de Code -> Donwload ZIP o utilizando el siguiente comando desde tu terminal:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+git clone https://github.com/devalexr/FraguaChallange.git
 ```
 
-## Step 2: Start your Application
+## Paso 2: Instalar dependencias
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Una vez descargado el repositorio debemos instalar todas las dependencias necesarias. Para ello utilizaremos el gestor de paquetes **yarn**
 
-### For Android
+Asegúrate de que en tu terminal te encuentras en la raíz del repositorio
 
 ```bash
-# using npm
-npm run android
+# Ingresar al proyecto desde la terminal
+cd ruta/al/repositorio
 
-# OR using Yarn
+# Instalar las dependencias con yarn
+yarn install
+```
+
+> **Note**: Este proceso puede tomar algunos minutos. se paciente.
+
+## Paso 3: Instalar Pods (iOS)
+
+Los **Pods** son librerías necesarias para correr la aplicación en el ambiente de iOS, asegúrate de instalarlos con el siguiente comando:
+
+```bash
+# Sin salir de la terminal, ingresa a la carpeta ios
+cd ios
+
+# Instalar las dependencias con el comando "pod install"
+pod install
+
+# Regresa a la raíz del repositorio
+cd ..
+```
+
+> **Note**: Este proceso puede tomar algunos minutos. se paciente.
+
+## Paso 4: Crear el archivo .env
+
+Asegúrate de crear el archivo de las variables de entorno ya que este es sumamente importante para el funcionamiento correcto de la aplicación.
+Puedes consultar la estructura del **.env** en el archivo **.env.example** incluido en el repositorio.
+
+```bash
+UNSPLASH_API_URL=https://api.unsplash.com
+UNSPLASH_API_KEY_ACCESS=xxxxxx
+AXIOS_REQUEST_TIMEOUT=5000;
+```
+
+> **Note**: Asegúrate de conseguir tu [Unsplash Access Key] en (https://unsplash.com/developers) y remplazarlo por el valor de UNSPLASH_API_KEY_ACCESS dentro del archivo .env
+
+## Paso 5: Iniciar la aplicación
+
+Para correr la aplicación ejecuta el siguiente comando para _Android_ o _iOS_:
+
+### Para Android
+
+```bash
 yarn android
 ```
 
-### For iOS
+### Para iOS
 
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+> **Note**: Este proceso puede llevar varios minutos la primera vez que intentas correr la aplicación ya que instalara todas las dependencias necesarias y levantara los emuladores. Se paciente, Si todo está configurado _correctamente_, debería ver la aplicación ejecutándose en su _Emulador de Android_ o _Simulador de iOS_ en breve, siempre que haya configurado su emulador/simulador correctamente.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Esta es una forma de ejecutar la aplicación - también puede ejecutarla directamente desde Android Studio y Xcode respectivamente.
 
-## Step 3: Modifying your App
+## Hasta aquí todo debería funcionar! :tada:
 
-Now that you have successfully run the app, let's modify it.
+¡Lo has logrado! Ya puedes utilizar y modificar la aplicación :partying_face:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Testing
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Para correr los test debes de seguir los siguientes comandos:
 
-## Congratulations! :tada:
+```bash
+# Ingresar al proyecto desde la terminal
+cd ruta/al/repositorio
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+# Correr los test:
+yarn run test
+```
