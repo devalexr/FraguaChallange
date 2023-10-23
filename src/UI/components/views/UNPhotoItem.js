@@ -12,6 +12,7 @@ export class UNPhotoItem extends Component {
     const item = this.props.item;
     return (
       <View
+        testID="UNPhotoItem"
         style={[
           {
             marginHorizontal: 20,

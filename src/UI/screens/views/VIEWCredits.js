@@ -8,6 +8,7 @@ export default class VIEWCredits extends Component {
     return (
       <ScrollView>
         <View
+          testID="VIEWCredits"
           style={{
             padding: 20,
           }}>

@@ -84,6 +84,7 @@ export default class VIEWSearch extends VIEWPagination {
   renderHeader() {
     return (
       <View
+        testID="VIEWSearch"
         style={{
           zIndex: 10,
           borderTopColor: GUI_colors.COLOR_BORDER,
@@ -109,6 +110,7 @@ export default class VIEWSearch extends VIEWPagination {
               alignItems: 'center',
             }}>
             <Pressable
+              testID="BTNSearch"
               onPress={() => {
                 Keyboard.dismiss();
                 this.VController.onPressSearchButton();
@@ -124,6 +126,7 @@ export default class VIEWSearch extends VIEWPagination {
           <AutocompleteInput
             autoFocus={true}
             returnKeyType="search"
+            testID="INPSearch"
             hideResults={!this.state.showingSuggestions}
             placeholder="Buscar imágenes"
             containerStyle={{

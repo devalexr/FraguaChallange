@@ -21,6 +21,7 @@ export default class VIEWTopics extends VIEWPagination {
   renderItem(item) {
     return (
       <Pressable
+        testID="UNPhotoTopic"
         onPress={() => {
           this.VController.onPressItem(item);
         }}>
