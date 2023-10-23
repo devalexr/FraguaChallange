@@ -10,6 +10,7 @@ import {UNLikeIcon} from './UNLikeIcon';
 export class UNPhotoItem extends Component {
   render() {
     const item = this.props.item;
+
     return (
       <View
         testID="UNPhotoItem"
@@ -83,7 +84,7 @@ export class UNPhotoItem extends Component {
                   marginRight: 10,
                 }}
                 source={{
-                  uri: item.user.profile_image.large,
+                  uri: item.user.profile_image.medium,
                   height: 50,
                   width: 50,
                 }}

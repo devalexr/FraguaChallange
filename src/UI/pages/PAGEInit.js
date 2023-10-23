@@ -15,9 +15,9 @@ export default class PAGEInit extends Component {
       setTimeout(() => {
         this.props.navigation.navigate('home');
       }, 1000);
+    } else {
+      this.props.navigation.navigate('home');
     }
-
-    this.props.navigation.navigate('home');
   }
 
   render() {
