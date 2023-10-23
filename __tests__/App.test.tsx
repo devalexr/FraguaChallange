@@ -3,9 +3,15 @@
  */
 
 import 'react-native';
-import React, {Component} from 'react';
+import React from 'react';
 import App from '../App';
-import {render, waitFor, act, screen} from '@testing-library/react-native';
+import {
+  render,
+  waitFor,
+  act,
+  screen,
+  fireEvent,
+} from '@testing-library/react-native';
 // Note: import explicitly to use the types shiped with jest.
 import {it, describe, beforeEach, expect} from '@jest/globals';
 
@@ -27,11 +33,28 @@ describe('App', () => {
     });
   });
 
-  it('Check HOMEView photo list', async () => {
+  it('Check HOMEView photo list and pagination', async () => {
+    let photo_list;
     await waitFor(() => {
-      const pagination_list = screen.getByTestId('flatListPagination');
-      expect(pagination_list).toBeDefined();
-      expect(pagination_list.props.data.length).toBe(10);
+      photo_list = screen.getByTestId('flatListPagination');
+      expect(photo_list).toBeDefined();
+      expect(photo_list.props.data.length).toBe(10);
+    });
+
+    act(() => {
+      fireEvent.scroll(photo_list, {
+        nativeEvent: {
+          contentSize: {height: 500, width: 100},
+          contentOffset: {y: 500},
+          layoutMeasurement: {height: 100, width: 100},
+        },
+      });
+    });
+
+    await waitFor(() => {
+      let paginated_photo_list = screen.getByTestId('flatListPagination');
+      expect(paginated_photo_list.props.data.length).toBe(20);
     });
   });
+
 });
