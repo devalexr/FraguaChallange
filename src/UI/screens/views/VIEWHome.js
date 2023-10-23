@@ -36,7 +36,7 @@ export default class VIEWHome extends VIEWPagination {
   renderHeader() {
     return (
       <View
-        testID="appHeader"
+        testID="VIEWHome"
         style={{
           flexDirection: 'row',
           backgroundColor: 'white',

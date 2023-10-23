@@ -27,22 +27,22 @@ describe('App', () => {
     expect(screen).toBeDefined();
   });
 
-  it('Check if the app shows the HOMEView', () => {
+  it('Check if the app shows the VIEWHome', () => {
     waitFor(() => {
-      expect(screen.getByTestId('appHeader')).toBeDefined();
+      expect(screen.getByTestId('VIEWHome')).toBeDefined();
     });
   });
 
-  it('Check HOMEView photo list and pagination', async () => {
-    let photo_list;
+  it('Check VIEWHome photo list and pagination', async () => {
+    let FLATLIST_photos;
     await waitFor(() => {
-      photo_list = screen.getByTestId('flatListPagination');
-      expect(photo_list).toBeDefined();
-      expect(photo_list.props.data.length).toBe(10);
+      FLATLIST_photos = screen.getByTestId('flatListPagination');
+      expect(FLATLIST_photos).toBeDefined();
+      expect(FLATLIST_photos.props.data.length).toBe(10);
     });
 
     act(() => {
-      fireEvent.scroll(photo_list, {
+      fireEvent.scroll(FLATLIST_photos, {
         nativeEvent: {
           contentSize: {height: 500, width: 100},
           contentOffset: {y: 500},
@@ -52,9 +52,19 @@ describe('App', () => {
     });
 
     await waitFor(() => {
-      let paginated_photo_list = screen.getByTestId('flatListPagination');
-      expect(paginated_photo_list.props.data.length).toBe(20);
+      let FLATLIST_photos_paginated = screen.getByTestId('flatListPagination');
+      expect(FLATLIST_photos_paginated.props.data.length).toBe(20);
     });
   });
 
+  it('Check navigate to VIEWTopics and shows list', async () => {
+    await act(() => {
+      fireEvent.press(screen.getAllByTestId('NAVVIEWTopics')[0]);
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId('VIEWTopics')).toBeDefined();
+      let FLATLIST_topics = screen.getByTestId('flatListPagination');
+      expect(FLATLIST_topics.props.data.length).toBe(10);
+    });
+  });
 });

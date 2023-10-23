@@ -74,8 +74,10 @@ export default class ROUTERTabBottomNavigation extends React.Component {
 
   getNavigationIcon(route, focused) {
     const icon = this.routes[route].icon;
+
     return (
       <View
+        testID={'NAV' + route}
         style={{
           backgroundColor: focused
             ? GUI_colors.COLOR_TAB_NAVIGATOR_BACKGROUND

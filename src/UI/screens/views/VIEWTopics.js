@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Dimensions, Pressable, Text} from 'react-native';
+import {Dimensions, Pressable, Text, View} from 'react-native';
 import VIEWPagination from './VIEWPagination';
 import VControllerTopics from '../controllers/VControllerTopics';
 import {UIImageLoading} from '../../components/UIImages';
@@ -12,6 +12,10 @@ export default class VIEWTopics extends VIEWPagination {
   constructor(props) {
     super(props);
     this.VController.setView(this);
+  }
+
+  renderHeader() {
+    return <View testID="VIEWTopics" />;
   }
 
   renderItem(item) {
