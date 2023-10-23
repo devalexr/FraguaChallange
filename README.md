@@ -4,7 +4,7 @@
 
 ## Paso 1: Clonar el repositorio
 
-Puedes descargar directamente el repositorio desde la opción de Code -> Donwload ZIP o utilizando el siguiente comando desde tu terminal:
+Puedes descargar directamente el repositorio desde la opción de **Code -> Donwload ZIP** o utilizando el siguiente comando desde tu terminal:
 
 ```bash
 git clone https://github.com/devalexr/FraguaChallange.git
@@ -12,7 +12,7 @@ git clone https://github.com/devalexr/FraguaChallange.git
 
 ## Paso 2: Instalar dependencias
 
-Una vez descargado el repositorio debemos instalar todas las dependencias necesarias. Para ello utilizaremos el gestor de paquetes **yarn**
+Una vez descargado el repositorio debemos instalar todas las dependencias. Para ello utilizaremos el gestor de paquetes **yarn**
 
 Asegúrate de que en tu terminal te encuentras en la raíz del repositorio
 
@@ -28,7 +28,7 @@ yarn install
 
 ## Paso 3: Instalar Pods (iOS)
 
-Los **Pods** son librerías necesarias para correr la aplicación en el ambiente de iOS, asegúrate de instalarlos con el siguiente comando:
+Los **Pods** son librerías necesarias para correr la aplicación en el ambiente de iOS. Asegúrate de instalarlos con el siguiente comando:
 
 ```bash
 # Sin salir de la terminal, ingresa a la carpeta ios
