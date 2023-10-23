@@ -9,7 +9,7 @@ export default class APIService {
     axios.defaults.timeout = parseInt(AXIOS_REQUEST_TIMEOUT);
     this.logBefore(url, 'get');
     const response = await axios.get(url);
-    this.logAfter(url, 'get', response);
+    //this.logAfter(url, 'get', response);
     return response;
   }
 

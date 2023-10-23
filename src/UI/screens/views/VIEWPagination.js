@@ -11,6 +11,7 @@ export default class VIEWPagination extends Component {
         <View>
           {this.renderHeader()}
           <FlatList
+            testID="flatListPagination"
             data={this.state.data}
             bounces={false}
             keyExtractor={item => {
