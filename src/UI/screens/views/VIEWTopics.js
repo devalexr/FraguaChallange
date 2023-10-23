@@ -6,7 +6,7 @@ import VControllerTopics from '../controllers/VControllerTopics';
 import {UIImageLoading} from '../../components/UIImages';
 import LinearGradient from 'react-native-linear-gradient';
 import {GUI_styles} from '../../styles/STYLESMain';
-export default class VIEWExplore extends VIEWPagination {
+export default class VIEWTopics extends VIEWPagination {
   VController = VControllerTopics;
 
   constructor(props) {
